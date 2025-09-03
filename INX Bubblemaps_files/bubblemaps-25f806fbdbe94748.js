@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9033],{1779:function(n,_,u){(window.__NEXT_P=window.__NEXT_P||[]).push(["/bubblemaps",function(){return u(8286)}])}},function(n){n.O(0,[6523,3261,8286,2888,9774,179],function(){return n(n.s=1779)}),_N_E=n.O()}]);
